@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{MA 242 Project}
+\author{Caleb Soemer, Josh Moorman, Sami Gephart, Noah Taylor, and Saad Khan}
+\date{April 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Steepest Descent Write Up (1.4)}
+\textbf{With the initial guess x_0 = (1,1), the optimal weight vector is <-.9998, 2.9996> with 81 iterations. \\ With the initial guess x_0 = (10,10), the optimal weight vector is <-9.9998, 29.9996> with 101 iterations.\\ With the initial guess x_0 = (10,10), the optimal weight vector is <-99.9998, 299.999> with 123 iterations. \\ Each Initial guess appeared to increase the optimal weight vector by a factor of ten while the iterations increased by around 20 each guess. \\ When we switched the initial matrix, the optimum weight vector and the number of iterations sky rocket with an optimum weight vector of <749.7171,750.2169> with 1812 iterations. The x and y components of the optimum weight vectors nearly reached a point of equivalency.}
+\end{document}
