@@ -1,0 +1,48 @@
+% Steepest Descend Algorithm with optimum step size computation
+% Caleb Soemer
+% 05/01/2020
+
+%Source:
+%Obaid Mushtaq (2020). Steepest Descent Algorithm
+%(https://www.mathworks.com/matlabcentral/fileexchange/22532-steepest-descent-algorithm), MATLAB
+%Central File Exchange. Retrieved April 26, 2020.
+
+clear,clc
+
+R=[1.001 -.999; -.999 1.001]; %Original matrix that is switched for updated
+p=[1 2]'; %x0
+
+% Choose an initial step size
+a=0;
+b=2/trace(R);
+steps = a + (b-a).*ones(10,1); %Setting the step size for each iterationw
+step=steps(ceil(10*rand(1,1)));
+fprintf('-----------------------------------------------------\n');
+fprintf(' Upper bound for step size: %d\n ',0);
+fprintf('Lower bound for step size [ 2/trace(R) ] : %f\n ',b);
+fprintf('Chosen initial step size: %f\n ',step);
+
+% Initialize the weights
+w_initial=zeros(2,1);
+
+% Steepest Descend Algorithm with optimum step size computation on 
+% each iteration
+k=2;
+while 1
+    w_new=w_initial + step*(p-R*w_initial);
+    % Stopping criterion
+    if norm(p-R*w_initial) < 1e-4
+        % Print the results on success!
+        fprintf('Optimum Weight Vector is:\n')
+        Wopt=w_new
+        % Number of interations performed by algorithm
+        fprintf('Number of iterations: %d\n',k-1)
+        fprintf('-----------------------------------------------------\n');
+        break
+    else
+        w_initial=w_new;
+        %Update the step size by finding the optimum step size
+        step=(p-R*w_initial)'*(p-R*w_initial)/((p-R*w_initial)'*R*(p-R*w_initial));
+        k=k+1;
+    end
+end
